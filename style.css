@@ -4,3 +4,25 @@
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 300px;
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.field {
+  background-color: rgb(19, 65, 126);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
