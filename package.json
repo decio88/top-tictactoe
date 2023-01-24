@@ -1,0 +1,25 @@
+{
+  "name": "top-tictactoe",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe project from TOP",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decio88/top-tictactoe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decio88/top-tictactoe/issues"
+  },
+  "homepage": "https://github.com/decio88/top-tictactoe#readme",
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}
