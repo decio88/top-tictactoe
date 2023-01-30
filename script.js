@@ -32,11 +32,23 @@ function gameBoard() {
       playerMoves.push(moveId);
       moveId = boardArray.indexOf(player.getSymbol(), moveId + 1);
     }
-    if (winArray.includes(playerMoves)) {
-      alert(`${player} wins!`);
-    } else if (!boardArray.includes(undefined)) {
+
+    let i = 0;
+    while (i < winArray.length) {
+      if (winArray[i].every((v) => playerMoves.includes(v))) {
+        alert('array found');
+      }
+      i++;
+    }
+    if (!boardArray.includes(undefined)) {
       alert('Draw!');
     }
+
+    // if (winArray.includes(playerMoves)) {
+    //   alert(`${player} wins!`);
+    // } else if (!boardArray.includes(undefined)) {
+    //   alert('Draw!');
+    // }
   }
 
   // function to play round
