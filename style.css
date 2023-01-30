@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  color: rgb(60, 60, 60);
 }
 
 .board {
@@ -18,21 +19,28 @@
 .reset {
   padding: 10px;
   border-radius: 10px;
+  background-color: rgb(226, 75, 0);
+  font-weight: 800;
+  color: white;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   padding: 30px;
-  background-color: aqua;
+  background-color: rgb(247, 123, 28);
   flex-direction: column;
   gap: 10px;
 }
 
+.result-message {
+  height: 2rem;
+}
+
 .box {
-  background-color: rgb(19, 65, 126);
+  background-color: rgb(226, 75, 0);
   border: 2px solid bisque;
   display: flex;
   justify-content: center;

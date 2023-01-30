@@ -21,30 +21,43 @@ function displayController() {
     document.querySelector('.turn').innerHTML = turnCounter;
   }
 
+  // function to reset the display
   function resetDisplay() {
     document.querySelectorAll('.box').forEach((box) => {
       box.innerHTML = '';
       turnCounter = 0;
       document.querySelector('.turn').innerHTML = turnCounter;
+      document.querySelector('.result-message>h2').innerHTML = '';
     });
   }
 
-  return { displaySymbols, resetDisplay };
+  // function to display the game result
+  function resultMessage(condition, player) {
+    const resultMsg = document.querySelector('.result-message>h2');
+    if (condition === 1) {
+      resultMsg.innerHTML = `Congratulations ${player.getName()}, you won!`;
+    } else {
+      resultMessage.innerHTML = "It's a draw!";
+    }
+  }
+
+  return { displaySymbols, resetDisplay, resultMessage };
 }
 
 // Factory function to create player
-const Player = (symbol, turn) => {
+const Player = (name, symbol, turn) => {
   const getTurn = () => turn;
   const getSymbol = () => symbol;
   const changeTurn = () => (turn = !turn);
   const setTurn = (value) => {
     turn = value;
   };
-  return { getTurn, getSymbol, changeTurn, setTurn };
+  const getName = () => name;
+  return { getTurn, getSymbol, changeTurn, setTurn, getName };
 };
 
-const player1 = Player('X', true);
-const player2 = Player('O', false);
+const player1 = Player('Player 1', 'X', true);
+const player2 = Player('Player 2', 'O', false);
 
 // Module to create the game board and store its information
 function gameBoard() {
@@ -63,13 +76,13 @@ function gameBoard() {
     let i = 0;
     while (i < winArray.length) {
       if (winArray[i].every((v) => playerMoves.includes(v))) {
-        alert('array found');
+        displayController().resultMessage(1, player);
         endGameCondition = true;
       }
       i++;
     }
     if (!boardArray.includes(undefined)) {
-      alert('Draw!');
+      displayController().resultMessage(0, player);
     }
   }
 
