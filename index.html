@@ -16,6 +16,17 @@
   </head>
   <body>
     <div class="container">
+      <div class="header">
+        <h1>Welcome to tic-tac-toe</h1>
+        <div class="players">
+          <p>Player 1 - X</p>
+          <p>Player 2 - O</p>
+        </div>
+        <div class="turn-indicator">
+          <p>Turn:</p>
+          <p class="turn"></p>
+        </div>
+      </div>
       <div class="board">
         <div class="box" data-id="0"></div>
         <div class="box" data-id="1"></div>
@@ -27,6 +38,8 @@
         <div class="box" data-id="7"></div>
         <div class="box" data-id="8"></div>
       </div>
+      <button class="reset">Reset Game</button>
+      <div class="bottom"></div>
     </div>
   </body>
 </html>

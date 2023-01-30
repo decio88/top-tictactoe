@@ -7,24 +7,58 @@
 
 .board {
   display: grid;
+  flex: 1;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 300px;
-  border: solid 20px bisque;
-  width: 300px;
+  min-height: 300px;
+  border: solid 5px bisque;
+  min-width: 300px;
+}
+
+.reset {
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50%;
-  width: 50%;
-  padding: 5rem;
+  height: 100vh;
+  padding: 30px;
   background-color: aqua;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .box {
   background-color: rgb(19, 65, 126);
   border: 2px solid bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(213, 213, 213);
+  font-size: 4rem;
+}
+
+.bottom {
+  margin-top: auto;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.turn-indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
 }
