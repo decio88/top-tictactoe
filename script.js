@@ -28,7 +28,7 @@ function gameBoard() {
   function winGame(player) {
     const playerMoves = [];
     let moveId = boardArray.indexOf(player.getSymbol());
-    while (moveId != -1) {
+    while (moveId !== -1) {
       playerMoves.push(moveId);
       moveId = boardArray.indexOf(player.getSymbol(), moveId + 1);
     }
@@ -48,8 +48,8 @@ function gameBoard() {
         boardArray[id] = player1.getSymbol();
         winGame(player1);
       } else {
-        player2.playTurn();
-        player1.playTurn();
+        player2.changeTurn();
+        player1.changeTurn();
         boardArray[id] = player2.getSymbol();
         winGame(player2);
       }
@@ -59,7 +59,8 @@ function gameBoard() {
   // add event listeners to the divs
   document.querySelectorAll('.box').forEach((box) => {
     box.addEventListener('click', () => {
-      playRound(box.id);
+      const id = +box.getAttribute('data-id');
+      playRound(id);
     });
   });
 
@@ -68,3 +69,19 @@ function gameBoard() {
 }
 
 gameBoard();
+/* 
+function to check if play array contains an array of win array
+needs to loop through the win array. For each array need to check if the elements 
+of win array are contained in the player moves array.
+Need to return true if it is contained
+*/
+
+function compareArray(playerArray) {
+  let i = 0;
+  while (i < winArray.length) {
+    if (winArray[i].every((v) => playerArray.includes(v))) {
+      alert('array found');
+    }
+    i++;
+  }
+}
