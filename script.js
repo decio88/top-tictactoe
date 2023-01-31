@@ -56,8 +56,44 @@ const Player = (name, symbol, turn) => {
   return { getTurn, getSymbol, changeTurn, setTurn, getName };
 };
 
-const player1 = Player('Player 1', 'X', true);
-const player2 = Player('Player 2', 'O', false);
+let player1;
+let player2;
+
+// Functions to create players and manage overlay
+
+function createPlayer1() {
+  const playerName = document.querySelector(`#player1`).value;
+  player1 = Player(playerName, 'X', true);
+  document.querySelector('.player1').classList.add('hidden');
+}
+
+function createPlayer2() {
+  const playerName = document.querySelector(`#player2`).value;
+  player2 = Player(playerName, 'O', false);
+  document.querySelector('.player2').classList.add('hidden');
+}
+
+function hideOverlay() {
+  if (player1 !== undefined && player2 !== undefined) {
+    document.querySelector('.overlay').classList.add('hidden');
+  }
+}
+
+function resetOverlay() {
+  document.querySelector('.overlay').classList.remove('hidden');
+  document.querySelector('.player2').classList.remove('hidden');
+  document.querySelector('.player1').classList.remove('hidden');
+}
+
+document.querySelector('#pl1Btn').addEventListener('click', () => {
+  createPlayer1();
+  hideOverlay();
+});
+
+document.querySelector('#pl2Btn').addEventListener('click', () => {
+  createPlayer2();
+  hideOverlay();
+});
 
 // Module to create the game board and store its information
 function gameBoard() {
@@ -115,8 +151,9 @@ function gameBoard() {
     }
     displayController().resetDisplay();
     endGameCondition = false;
-    player1.setTurn(true);
-    player2.setTurn(false);
+    player1 = undefined;
+    player2 = undefined;
+    resetOverlay();
   }
 
   // add event listeners to the divs
