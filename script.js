@@ -65,12 +65,14 @@ function createPlayer1() {
   const playerName = document.querySelector(`#player1`).value;
   player1 = Player(playerName, 'X', true);
   document.querySelector('.player1').classList.add('hidden');
+  document.querySelector('#player1-name').innerHTML = playerName;
 }
 
 function createPlayer2() {
   const playerName = document.querySelector(`#player2`).value;
   player2 = Player(playerName, 'O', false);
   document.querySelector('.player2').classList.add('hidden');
+  document.querySelector('#player2-name').innerHTML = playerName;
 }
 
 function hideOverlay() {
