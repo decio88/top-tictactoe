@@ -170,3 +170,5 @@ function gameBoard() {
 }
 
 gameBoard();
+
+// AI moves here below
