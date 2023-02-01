@@ -172,3 +172,25 @@ function gameBoard() {
 gameBoard();
 
 // AI moves here below
+// Computer makes a random valid move
+
+function pcMoves() {
+  // get the valid moves
+  const validMoves = [];
+
+  for (let i = 0; i < boardArray.length; i++) {
+    if (boardArray[i] === undefined) {
+      validMoves.push(i);
+    }
+  }
+
+  // get the randomized move id
+  const move = Math.floor(Math.random() * validMoves.length);
+  const moveId = validMoves[move];
+
+  // play the randomized turn
+
+  return { validMoves, moveId, move };
+}
+
+// choose a random move among the available ones
