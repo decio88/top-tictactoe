@@ -45,7 +45,7 @@ function displayController() {
 }
 
 // Factory function to create player
-const Player = (name, symbol, turn, isAi) => {
+const Player = (name, symbol, turn, isAi = false) => {
   const getTurn = () => turn;
   const getSymbol = () => symbol;
   const changeTurn = () => (turn = !turn);
@@ -64,7 +64,7 @@ let player2;
 
 function createPlayer1() {
   const playerName = document.querySelector(`#player1`).value;
-  player1 = Player(playerName, 'X', true, false);
+  player1 = Player(playerName, 'X', true);
   document.querySelector('.player1').classList.add('hidden');
   document.querySelector('#player1-name').innerHTML = playerName;
 }
@@ -75,7 +75,7 @@ function createPlayer2() {
   if (document.querySelector('#ai').checked) {
     player2 = Player(playerName, 'O', false, true);
   } else {
-    player2 = Player(playerName, 'O', false, false);
+    player2 = Player(playerName, 'O', false);
   }
   document.querySelector('.player2').classList.add('hidden');
   document.querySelector('#player2-name').innerHTML = playerName;
