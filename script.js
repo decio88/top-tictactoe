@@ -45,7 +45,7 @@ function displayController() {
 }
 
 // Factory function to create player
-const Player = (name, symbol, turn) => {
+const Player = (name, symbol, turn, isAi) => {
   const getTurn = () => turn;
   const getSymbol = () => symbol;
   const changeTurn = () => (turn = !turn);
@@ -53,7 +53,8 @@ const Player = (name, symbol, turn) => {
     turn = value;
   };
   const getName = () => name;
-  return { getTurn, getSymbol, changeTurn, setTurn, getName };
+  const getIsAi = () => isAi;
+  return { getTurn, getSymbol, changeTurn, setTurn, getName, getIsAi };
 };
 
 let player1;
@@ -63,14 +64,19 @@ let player2;
 
 function createPlayer1() {
   const playerName = document.querySelector(`#player1`).value;
-  player1 = Player(playerName, 'X', true);
+  player1 = Player(playerName, 'X', true, false);
   document.querySelector('.player1').classList.add('hidden');
   document.querySelector('#player1-name').innerHTML = playerName;
 }
 
 function createPlayer2() {
   const playerName = document.querySelector(`#player2`).value;
-  player2 = Player(playerName, 'O', false);
+
+  if (document.querySelector('#ai').checked) {
+    player2 = Player(playerName, 'O', false, true);
+  } else {
+    player2 = Player(playerName, 'O', false, false);
+  }
   document.querySelector('.player2').classList.add('hidden');
   document.querySelector('#player2-name').innerHTML = playerName;
 }
@@ -135,6 +141,14 @@ function gameBoard() {
           boardArray[id] = player1.getSymbol();
           displayController().displaySymbols(id, player1.getSymbol());
           gameEngine(player1);
+          if (player2.getIsAi() === true) {
+            const aiMove = pcMoves();
+            player1.changeTurn();
+            player2.changeTurn();
+            boardArray[aiMove] = player2.getSymbol();
+            displayController().displaySymbols(aiMove, player2.getSymbol());
+            gameEngine(player2);
+          }
         } else {
           player2.changeTurn();
           player1.changeTurn();
@@ -190,7 +204,7 @@ function pcMoves() {
 
   // play the randomized turn
 
-  return { validMoves, moveId, move };
+  return moveId;
 }
 
 // choose a random move among the available ones
